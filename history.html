@@ -233,71 +233,16 @@
             padding: 2rem 0;
         }
 
+        /* Fixed layout for all devices - no responsive breakpoints */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
+            /* Keep desktop layout but ensure content fits */
+            body {
+                min-width: 1200px;
             }
-
-            .logo {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .logo img {
-                height: 55px;
-            }
-
-            .logo-text h1 {
-                font-size: 1.5rem;
-            }
-
-            .logo-text p {
-                font-size: 0.8rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item::before {
-                left: 60px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
-            }
-
-            .timeline-item:nth-child(odd) {
-                left: 0%;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0%;
-            }
-
-            .timeline-item::after {
-                left: 15px;
-            }
-
-            .timeline-item:nth-child(even)::after {
-                left: 15px;
+            
+            .container {
+                min-width: 1200px;
+                padding: 0 20px;
             }
         }
     </style>

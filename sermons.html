@@ -259,46 +259,16 @@
             padding: 2rem 0;
         }
 
+        /* Fixed layout for all devices - no responsive breakpoints */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
+            /* Keep desktop layout but ensure content fits */
+            body {
+                min-width: 1200px;
             }
-
-            .logo {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .logo img {
-                height: 55px;
-            }
-
-            .logo-text h1 {
-                font-size: 1.5rem;
-            }
-
-            .logo-text p {
-                font-size: 0.8rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .sermon-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .series-grid {
-                grid-template-columns: 1fr;
+            
+            .container {
+                min-width: 1200px;
+                padding: 0 20px;
             }
         }
     </style>
