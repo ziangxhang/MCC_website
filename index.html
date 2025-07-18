@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malden Community Church</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0.5rem 0 0 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('pics/Fbc-Malden-Church-Building.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 6rem 0;
+            min-height: 70vh;
+            text-align: center;
+            color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44,62,80,0.3) 0%, rgba(52,152,219,0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background-color: rgba(231,76,60,0.9);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background-color: rgba(192,57,43,0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231,76,60,0.4);
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .date {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .service-times {
+            background: #3498db;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .service-times h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #ecf0f1;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .video-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin-top: 1rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .video-text {
+            padding: 2rem;
+        }
+
+        .video-text h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .video-text p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* iPad styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .hero {
+                min-height: 60vh;
+                padding: 4rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* iPhone and small tablet styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .logo img {
+                height: 55px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                background-attachment: scroll;
+                padding: 2.5rem 0;
+                min-height: 45vh;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* iPhone in landscape or very small screens */
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 40vh;
+                padding: 2rem 0;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="pics/Malden Community Church Logo.jpg" alt="Malden Community Church Logo">
+                    <div class="logo-text">
+                        <h1>Malden Community Church</h1>
+                        <p>In-person Sunday Worship Service starts at 11:00 a.m.</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="sermons.html">Sermons</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Welcome to Our Church Family</h2>
+            <p>Join us as we worship together, grow in faith, and serve our community with love</p>
+            <a href="#services" class="cta-button">Join Us This Sunday</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="video-section">
+                <div class="video-text">
+                    <h3>Watch Pastor Gary's Latest Message</h3>
+                    <p>Experience our worship service and hear God's Word proclaimed. Join us online or visit us in person this Sunday at 11:00 AM.</p>
+                    <p>Can't make it to church? Watch our services online and stay connected with our church family.</p>
+                </div>
+                <div class="video-content">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/bzCs0sKNP3A" title="Church Service" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Our Church</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>Our Church’s Mission is to help and care for one another as we strive to be an example of Christ’s love to all. (Read John 13:34-35)</p>
+                </div>
+                <div class="card">
+                    <h3>Our Pastor</h3>
+                    <p><strong>Pastor Gary McClenthen</strong>, and we love him!</p>
+                </div>
+                <div class="card">
+                    <h3>Our Church Covenant</h3>
+                    <p>Having been led, as we believe, by the Spirit of God to receive Jesus, The Christ, as our Savior and Lord, we do now solemnly and joyfully covenant with each other, to walk together with Him in Christian love, We do therefore pray…
+
+That we might watch over one another with Christian love, remembering each other in prayer, and aiding each other in sickness and distress.
+
+That we will regularly assemble for the public worship of God, and the observance of the ordinances of the Church.
+
+That we will maintain daily family and personal devotions in our home, provide for the religious training of our children and those under our care for the service of Christ and His people.
+
+That we will seek Divine aid to enable us to affirm love, justice and the unity of all people and to work as faithful disciples of The Christ.
+
+That we cheerfully contribute of our property according as God has prospered us for the maintenance of a faithful and evangelical ministry among us, for the relief of the distressed and for spreading The Gospel to all nations.
+
+And that we will strive to live to the glory of God who has given us life, and who has called us to serve Him and our sisters and brothers in the name of His Son.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="section" style="background-color: #ecf0f1;">
+        <div class="container">
+            <h2>Latest News & Announcements</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="date">December 15, 2024</div>
+                    <h3>Christmas Eve Service</h3>
+                    <p>Join us for our special Christmas Eve service at 6:00 PM. We'll have candlelight worship, Christmas carols, and a special message about the birth of Jesus.</p>
+                </div>
+                <div class="card">
+                    <div class="date">December 10, 2024</div>
+                    <h3>Community Food Drive</h3>
+                    <p>Our annual food drive continues through December 20th. Help us support local families in need by donating non-perishable food items.</p>
+                </div>
+                <div class="card">
+                    <div class="date">December 5, 2024</div>
+                    <h3>Youth Group Winter Camp</h3>
+                    <p>Registration is now open for our youth winter camp (ages 12-18) from January 15-17. Contact our youth pastor for more information.</p>
+                </div>
+                <div class="card">
+                    <div class="date">November 30, 2024</div>
+                    <h3>New Bible Study Series</h3>
+                    <p>Starting January 7th, we'll begin a new Bible study series "Living with Purpose" every Wednesday at 7:00 PM in the fellowship hall.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Service Times & Information</h2>
+            <div class="grid">
+                <div class="service-times">
+                    <h3>Sunday Services</h3>
+                    <p><strong>Morning Worship:</strong> 11:00 AM</p>
+                    <!-- <p><strong>Sunday School:</strong> 10:30 AM</p>
+                    <p><strong>Evening Service:</strong> 6:00 PM</p>
+                    <br>
+                    <p><strong>Wednesday Bible Study:</strong> 7:00 PM</p>
+                    <p><strong>Children's Ministry:</strong> During all services</p> -->
+                </div>
+                <div class="card">
+                    <h3>What to Expect</h3>
+                    <p>Our services include contemporary worship music, biblical teaching, and a welcoming community atmosphere. Dress comfortably - we care more about your heart than your attire.</p>
+                    <p>We provide nursery care for infants and toddlers, and children's programs during the service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="section" style="background-color: #ecf0f1;">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p><strong>Address:</strong> 493 Main St, Malden, MA 02148</p>
+                    <p><strong>Phone:</strong> (781) 324-2745</p>
+                    <p><strong>Email:</strong> a_random@email.com</p>
+                    <p><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM</p>
+                </div>
+                <div class="card">
+                    <h3>Visit Us</h3>
+                    <p>We'd love to meet you! Whether you're new to faith or looking for a church home, you're welcome here. Come as you are - we're excited to worship with you.</p>
+                    <p>Free parking is available in our lot behind the church, and we have accessible entrances for those with mobility needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Malden Community Church. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

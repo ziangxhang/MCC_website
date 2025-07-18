@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church History - Malden Community Church</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0.5rem 0 0 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23e8f4f8" width="1200" height="400"/><path fill="%23d4e6f1" d="M0,200L50,180C100,160,200,120,300,100C400,80,500,80,600,100C700,120,800,160,900,180C1000,200,1100,200,1150,200L1200,200V400H1150C1100,400,1000,400,900,400C800,400,700,400,600,400C500,400,400,400,300,400C200,400,100,400,50,400L0,400Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #3498db;
+            border: 4px solid white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content .date {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .church-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e8f4f8, #d4e6f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        .photo-card-content {
+            padding: 1.5rem;
+        }
+
+        .photo-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .logo img {
+                height: 55px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+
+            .timeline-item:nth-child(odd) {
+                left: 0%;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="pics/Malden Community Church Logo.jpg" alt="Malden Community Church Logo">
+                    <div class="logo-text">
+                        <h1>Malden Community Church</h1>
+                        <p>In-person Sunday Worship Service starts at 11:00 a.m.</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="sermons.html">Sermons</a></li>
+                        <li><a href="index.html#news">News</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Our Church History</h1>
+            <p>Celebrating over 220 years of faith, fellowship, and service in the Malden community</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Timeline of Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1803</div>
+                        <h3>Church Founded</h3>
+                        <p>First Baptist Church of Malden was established on December 27, 1803. The first worship service was held in Faulkner Barn, and the first Lord's Supper was celebrated in January 1804.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1804</div>
+                        <h3>First Meeting House</h3>
+                        <p>The First Meeting House was built and dedicated in September 1804 on Salem Street, providing the congregation with their first dedicated place of worship.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1820</div>
+                        <h3>Church Incorporated</h3>
+                        <p>The church was officially incorporated with the power to hold property up to $20,000, establishing its legal foundation for future growth.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1827</div>
+                        <h3>First Choir</h3>
+                        <p>The first mention of a choir appears in church records, marking the beginning of our musical ministry tradition.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1843</div>
+                        <h3>Second House of Worship</h3>
+                        <p>The Second House of Worship was completed after a building committee was formed in 1840 to plan for the growing congregation's needs.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1855 & 1862</div>
+                        <h3>Devastating Fires</h3>
+                        <p>Two devastating fires destroyed church buildings in 1855 and 1862, testing the faith and resilience of the congregation but strengthening their resolve to rebuild.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1864</div>
+                        <h3>Fourth House of Worship</h3>
+                        <p>Following the fires, the Fourth House of Worship was built, demonstrating the congregation's commitment to maintaining their place of worship.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1891</div>
+                        <h3>Fifth House of Worship</h3>
+                        <p>The Fifth House of Worship was dedicated at a cost of $96,000, representing a significant investment in the church's future and the community's faith.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1945-1969</div>
+                        <h3>Rev. Hillyer Straton</h3>
+                        <p>Rev. Hillyer Straton served as the longest-serving pastor in church history, providing spiritual leadership for 24 years during a period of significant growth and community outreach.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">1997</div>
+                        <h3>First Female Senior Pastor</h3>
+                        <p>Rev. Martha Dominy was installed as the first female Senior Pastor, marking a historic milestone in the church's leadership and commitment to inclusive ministry.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">2003</div>
+                        <h3>200th Anniversary</h3>
+                        <p>The church celebrated its 200th anniversary, reflecting on two centuries of faithful service to the Malden community and looking forward to future ministries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #ecf0f1;">
+        <div class="container">
+            <h2>Historical Moments</h2>
+            <div class="church-photos">
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        [Historical Photo - Original Church Building 1952]
+                    </div>
+                    <div class="photo-card-content">
+                        <h3>Original Church Building</h3>
+                        <p>Our first dedicated church building on Main Street, where generations of families have worshipped together since 1952.</p>
+                    </div>
+                </div>
+                
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        [Historical Photo - Congregation 1965]
+                    </div>
+                    <div class="photo-card-content">
+                        <h3>Growing Congregation</h3>
+                        <p>The church family in 1965 during the launch of our Sunday School program, showing our commitment to Christian education.</p>
+                    </div>
+                </div>
+                
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        [Historical Photo - Building Expansion 1995]
+                    </div>
+                    <div class="photo-card-content">
+                        <h3>1995 Expansion</h3>
+                        <p>The completion of our major building expansion project, accomplished through the generous giving of our church family.</p>
+                    </div>
+                </div>
+                
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        [Historical Photo - Community Service]
+                    </div>
+                    <div class="photo-card-content">
+                        <h3>Community Service</h3>
+                        <p>Our church has always been committed to serving the Malden community through various outreach programs and service projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Malden Community Church. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
